@@ -7,15 +7,15 @@ class FormProdutos extends Component {
     render() { 
         return ( 
             <form>
-                <TextField id="id" label="ID" />
+                <TextField id="id" label="ID" type="number"/>
                 <TextField id="nome" label="Nome" />
                 <TextField id="descricao" label="Descricao" />
                 <TextField id="categoria" label="Categoria" />
                 <div>
-                    <Button
-                    variant="contained"
-                    color="primary">Send
-                    </Button>
+                <Button
+                variant="contained"
+                color="primary">Send
+                </Button>
                 </div>
             </form>
          );
