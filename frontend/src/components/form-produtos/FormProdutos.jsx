@@ -12,10 +12,7 @@ class FormProdutos extends Component {
                 <TextField id="descricao" label="Descricao" />
                 <TextField id="categoria" label="Categoria" />
                 <div>
-                <Button
-                variant="contained"
-                color="primary">Send
-                </Button>
+                <Button variant="contained"color="primary">Send</Button>
                 </div>
             </form>
          );
