@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import {Button,Select} from '@material-ui/core';
+import Produto from '../models/produto';
 
 class FormProdutos extends Component {
-    id;
-    nome;
-    descricao;
-    categoria;
+  id;
+  nome;
+  descricao;
+  categoria;
+  handleid(e){
+    this.id = e.target.value;
+  }
+  handlenome(e){
+    this.nome = e.target.value;
+  }
+  handledescricao(e){
+    this.descricao = e.target.value;
+  }
   handlersalvar(event){
+    console.log(event);
     event.stopPropagation();
     event.preventDefault();
-    let model = {"id":event.target.id.value,"nome":event.target.nome.value,"descricao":event.target.descricao.value,"categoria":event.target.categoria.value}
+    let model = new Produto();
+    model.id = this.id;
+    model.nome = this.nome;
+    model.descricao = this.descricao;
+    model.categoria = event.target[3].value;
     this.props.create(model);
   }
     render() { 
         return ( 
             <form onSubmit={this.handlersalvar.bind(this)}>
-                <TextField id="id" label="ID" type="number"/>
-                <TextField id="nome" label="Nome" />
-                <TextField id="descricao" label="Descricao" />
-                <TextField id="categoria" label="Categoria" />
+                <TextField id="id" label="ID" type="number" onChange={this.handleid.bind(this)} />
+                <TextField id="nome" label="Nome" onChange={this.handlenome.bind(this)} />
+                <TextField id="descricao" label="Descricao" onChange={this.handledescricao.bind(this)} />
+                <Select id="categoria" label="Categoria" />
                 <div>
                 <Button size="small" type="submit" variant="contained"color="primary">Salvar</Button>
                 </div>

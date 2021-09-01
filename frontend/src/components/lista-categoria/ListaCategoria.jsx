@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,20 +7,29 @@ import TableRow from '@material-ui/core/TableRow';
 import TableContainer from '@material-ui/core/TableContainer';
 import Paper from '@material-ui/core/Paper';
 
-
 class ListaCategoria extends Component {
-    id;
-    nome;
-    descicao;
+    repo;
     constructor(props){
         super(props);
-        this.rowscat = props.lista;
+        this.state = {
+            list: []
+        };  
     }
-    useStyles = makeStyles({
-        table: {
-          minWidth: 650,
-        },
-      });
+    componentDidMount(){
+        this.repo = this.props.repo;
+        this.setState({
+            list : this.repo.list()
+        })
+        this.repo.inscrever(this.getProdutos.bind(this))
+    }
+    componentWillUnmount(){
+        this.repo.desinscrever(this.getProdutos.bind(this))
+    }
+    getProdutos(list){
+        this.setState({
+            list : list
+        })
+    }
     render() { 
         return ( 
             <TableContainer component={Paper}>
@@ -34,12 +42,14 @@ class ListaCategoria extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        <TableRow>
-                        <TableCell component="th" scope="row">{}
+                    {this.state.list.map((row)=>(
+                        <TableRow kew={row.id}>
+                        <TableCell component="th" scope="row">{row.id}
                         </TableCell>
-                        <TableCell align="center">{}</TableCell>
-                        <TableCell align="center">{}</TableCell>
+                        <TableCell align="center">{row.nome}</TableCell>
+                        <TableCell align="center">{row.descricao}</TableCell>
                         </TableRow>
+                    ))}
                     </TableBody>
                 </Table>
             </TableContainer>

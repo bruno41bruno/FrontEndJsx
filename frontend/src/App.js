@@ -3,21 +3,18 @@ import FormProdutos from "./components/form-produtos/FormProdutos";
 import ListaProdutos from "./components/lista-produtos/ListaProdutos";
 import FormCategoria from "./components/form-categoria/FormCategoria";
 import ListaCategoria from "./components/lista-categoria/ListaCategoria";
+import ProdutoRepository from "./components/repository/ProdutoRepository";
+import CategoriaRepository from "./components/repository/CategoriaRepository";
 
 class App extends Component {
-  lista = [];
-  constructor(props){
-    super(props);
-    this.state = {rows:this.lista}
+  repoProd;
+  repoCat;
+  constructor(){
+    super();
+    this.repoProd = new ProdutoRepository();
+    this.repoCat = new CategoriaRepository();
   }
-  create(model){
-    this.lista.push(model);
-    console.log(model);
-    this.setState(
-    {
-      rows : this.lista
-    })
-  }
+  
   render(){
     return (
       <section>
@@ -25,15 +22,15 @@ class App extends Component {
           <h1>
             Produtos
           </h1>
-          <FormProdutos create={this.create.bind(this)}/>
-          <ListaProdutos lista ={this.state.rows}/>
+          <FormProdutos create={this.repoProd.create.bind(this.repoProd)}/>
+          <ListaProdutos repo = {this.repoProd}/>
         </section>
         <section id="categoria">
         <h1>
             Categorias
           </h1>
-          <FormCategoria/>
-          <ListaCategoria/>
+          <FormCategoria create ={this.repoCat.create.bind(this.repoCat)}/>
+          <ListaCategoria repo ={this.repoCat}/>
         </section>
       </section>
   )}
