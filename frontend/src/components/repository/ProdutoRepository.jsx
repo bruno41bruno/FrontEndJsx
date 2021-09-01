@@ -20,7 +20,6 @@ export class ProdutoRepository{
     create(model){
         this.#list = [...this.#list, model];
         this.notificar();
-        console.log(this.#list);
     }
     list(){
         return this.#list;

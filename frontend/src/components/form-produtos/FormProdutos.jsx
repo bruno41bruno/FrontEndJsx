@@ -8,6 +8,15 @@ class FormProdutos extends Component {
   nome;
   descricao;
   categoria;
+  state = { cat:[] }
+    componentDidMount(){
+        this.props.repo.inscrever(this.atualiza_combo.bind(this))
+    }
+    atualiza_combo(list){
+        this.setState({
+            cat: this.props.repo.list()
+        })
+    }
   handleid(e){
     this.id = e.target.value;
   }
@@ -34,7 +43,14 @@ class FormProdutos extends Component {
                 <TextField id="id" label="ID" type="number" onChange={this.handleid.bind(this)} />
                 <TextField id="nome" label="Nome" onChange={this.handlenome.bind(this)} />
                 <TextField id="descricao" label="Descricao" onChange={this.handledescricao.bind(this)} />
-                <Select id="categoria" label="Categoria" />
+                <Select id="categoria" label="Categoria">
+                { this.props.repo.list().map((d,i)=>
+                    {
+                        return(
+                            <option value={d.id}>{d.nome}</option>
+                        )
+                    })}
+                </Select>
                 <div>
                 <Button size="small" type="submit" variant="contained"color="primary">Salvar</Button>
                 </div>

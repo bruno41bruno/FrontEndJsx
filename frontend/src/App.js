@@ -22,7 +22,7 @@ class App extends Component {
           <h1>
             Produtos
           </h1>
-          <FormProdutos create={this.repoProd.create.bind(this.repoProd)}/>
+          <FormProdutos create={this.repoProd.create.bind(this.repoProd)} repo = {this.repoCat}/>
           <ListaProdutos repo = {this.repoProd}/>
         </section>
         <section id="categoria">
