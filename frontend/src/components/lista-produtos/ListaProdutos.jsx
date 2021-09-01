@@ -10,14 +10,15 @@ import Paper from '@material-ui/core/Paper';
 
 
 class ListaProdutos extends Component {
-    
+    constructor(props){
+        super(props);
+        this.rows = props.lista;
+    }
     useStyles = makeStyles({
         table: {
           minWidth: 650,
         },
       });
-    rows = [{"id":1,"nome":'Bruno',"descricao":'burrao',"categoria":'humanoid'}
-    ]
     render() { 
         return ( 
             <TableContainer component={Paper}>
@@ -25,9 +26,9 @@ class ListaProdutos extends Component {
                     <TableHead>
                         <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell align="right">Nome</TableCell>
-                        <TableCell align="right">Descrição</TableCell>
-                        <TableCell align="right">Categoria</TableCell>
+                        <TableCell align="center">Nome</TableCell>
+                        <TableCell align="center">Descrição</TableCell>
+                        <TableCell align="center">Categoria</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
