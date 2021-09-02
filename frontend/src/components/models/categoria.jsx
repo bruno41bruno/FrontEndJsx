@@ -1,6 +1,6 @@
 class Categoria {
     id;
     nome;
-    descicao;
+    descricao;
 }
 export default Categoria;

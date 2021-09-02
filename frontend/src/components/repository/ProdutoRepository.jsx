@@ -14,7 +14,7 @@ export class ProdutoRepository{
     }
     notificar(){
         this.#inscritos.forEach(i=>{
-            i(this.#list);
+            i(this.#list);            
         });
     }
     create(model){
