@@ -29,9 +29,9 @@ function FormProdutos({repoProd,repoCat}) {
             {listC.map((d)=>
                 {
                     return(
-                        <option key={d.id} value={d.nome}>{d.nome}</option>
-                    )
-                })}
+                      <option key={d.id} value={d.nome}>{d.nome}</option>
+                      )
+                    })}
             </Select>
             <div>
             <Button size="small" type="submit" variant="contained"color="primary">Salvar</Button>

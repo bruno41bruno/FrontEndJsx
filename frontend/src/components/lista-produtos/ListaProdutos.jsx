@@ -11,8 +11,8 @@ function ListaProdutos({repoProd}) {
     let [lista, setLista] = useState(repoProd.list());
     repoProd.inscrever(setLista);
     return (
-        <TableContainer component={Paper}>
-            <Table size="small" aria-label="a dense table">
+        <TableContainer component={Paper} id="TableContainerP">
+            <Table size="small" aria-label="a dense table" >
                 <TableHead>
                     <TableRow>
                         <TableCell>ID</TableCell>

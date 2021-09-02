@@ -11,7 +11,7 @@ function ListaCategoria({repoCat}){
     let [lista, setLista] = useState(repoCat.list());
     repoCat.inscrever(setLista);
     return ( 
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} id="TableContainerC">
             <Table size="small" aria-label="a dense table">
                 <TableHead>
                     <TableRow>

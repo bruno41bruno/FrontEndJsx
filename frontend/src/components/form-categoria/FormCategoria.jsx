@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Categoria from '../models/categoria'
 
-function FormCategoria({create}){
+function FormCategoria({repoCat}){
   let id;
   let nome;
   let descricao;
@@ -15,7 +15,7 @@ function FormCategoria({create}){
               model.id = id;
               model.nome = nome;
               model.descricao = descricao;              
-              create(model);
+              repoCat.create(model);
           }}>
               <TextField id="idcat" label="ID" type="number" onChange={(e)=>id = e.target.value}/>
               <TextField id="nomecat" label="Nome" onChange={(e)=>nome = e.target.value}/>

@@ -22,7 +22,7 @@ function App(){
         <h1>
             Categorias
           </h1>
-          <FormCategoria create ={repoCat.create.bind(repoCat)} repoCat = {repoCat}/>
+          <FormCategoria repoCat ={repoCat}/>
           <ListaCategoria repoCat ={repoCat}/>
         </section>
       </section>
